@@ -59,7 +59,7 @@ public class XOREncoding {
 	}
 	
 	public static void main(String[] args) {
-		String pensamiento = "CuandoCeseLaLuchaYSeConsolideLaUnionYoBajareTranquiloAlSepulcro";
+		String pensamiento = "";
 //        XOREncoding encoding = new XOREncoding(pensamiento, 
 //        		"c:/eclipse/workspace/AlgorithmsAndCoding/source/com/lam/coder/usaco/logIn/usacoUser", 
 //        		"c:/eclipse/workspace/MathLibrary/src/com/lam/mathematics/dataOut/usacoUser.xyz");
