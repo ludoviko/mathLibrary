@@ -20,7 +20,6 @@ import java.util.List;
  * There are 2487 abundant numbers below 10,000.
  * 
  */
-
 public class AbundantNumbers {
 	public static final int LIMIT = 2487;
 	private List<Integer> numbers;

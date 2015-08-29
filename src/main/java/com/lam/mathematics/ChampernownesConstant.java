@@ -35,7 +35,6 @@ public class ChampernownesConstant {
 	private int upToFractionalPosition;
 	private StringBuilder champernownes;
 	public static final String PathToFile = "./src/main/resources/dataOut/champernownesNumber";
-
 	public ChampernownesConstant() {
 	}
 
@@ -57,7 +56,15 @@ public class ChampernownesConstant {
 		}
 	}
 
-	public void setChampernownes() {
+    public ChampernownesConstant(int upToFractionalPosition, String  pathToFile) {
+        // The 0 and the dot (0.) add two positions to the string
+        this.upToFractionalPosition = upToFractionalPosition + 2;
+        this.champernownes = new StringBuilder(this.upToFractionalPosition);
+            this.loadData(pathToFile);
+    }
+
+
+    public void setChampernownes() {
 		this.champernownes.append("0.");
 		int i = 1;
 		while (this.champernownes.length() < this.upToFractionalPosition) {
