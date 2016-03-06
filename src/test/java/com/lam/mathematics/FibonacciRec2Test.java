@@ -11,7 +11,7 @@ import java.util.Collection;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(Parameterized.class)
-public class FibonacciTest {
+public class FibonacciRec2Test {
     @Parameterized.Parameters(name = "{index}: fib({0})={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
@@ -35,15 +35,21 @@ public class FibonacciTest {
     private int input;
     private BigInteger expected;
 
-    public FibonacciTest(int input, BigInteger expected) {
+    public FibonacciRec2Test(int input, BigInteger expected) {
         this.input = input;
         this.expected= expected;
     }
 
     @Test(timeout = 3000)
     public void test() {
-        Fibonacci fibonacci = new Fibonacci(100);
+        FibonacciRec2 fibonacci = new FibonacciRec2(100);
         fibonacci.find();
-        assertEquals(expected, fibonacci.getData()[input]);
+        assertEquals(expected, fibonacci.getData().get(input));
     }
+
+    @Test(timeout = 3000)
+    public void testStaticMethod() {
+        assertEquals(expected, FibonacciRec2.getElement(input));
+    }
+
 }

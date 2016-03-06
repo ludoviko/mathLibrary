@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.lam.mathematics;
 
 import java.io.BufferedReader;
@@ -13,16 +10,16 @@ import java.util.Arrays;
 /**
  * Class for calculation the fibonacci number up to a given number.
  * Intermediate -lower- values are saved in an array of Big Integers.
- * Use of iterative technique.
+ * Use of memoization technique.
  */
-public class Fibonacci {
+public class FibonacciRec {
     private BigInteger[] data;
     private int n;
 
     /**
      * @param n: the parameter for the fibonacci constructor.
      */
-	public Fibonacci(int n) {
+    public FibonacciRec(int n) {
         // The serie is calculated for the starting arg of zero.
         this.data = new BigInteger[n + 1];
         this.n = n;
@@ -35,29 +32,25 @@ public class Fibonacci {
         if ( n > 0 ) {
             this.data[1] = new BigInteger("1");
         }
-	}
+    }
 
     /**
      * This method triggers the search of the fibonacci value for n.
      */
     public void find() {
-        this.calculate(this.n);
+         this.calculate(this.n);
     }
 
     /**
      * @param n: the argument for calculation the fibonacci number.
      * @return The calculated the fibonacci number.
-     * The array of calculated values is set accordingly.
+     * The array of calculated values is set accordingly for memoization.
      */
     private BigInteger calculate(int n) {
-        BigInteger result = null;
-        BigInteger a0 = null;
-        BigInteger a1 = null;
-
-        for (int i = 2; i <= n; i++) {
-            this.data[i]  = this.data[i-1].add(this.data[i-2]);
+        if ( ! this.data[n].equals(new BigInteger("-1"))) {
+            return this.data[n];
         }
-
+        this.data[n] = this.calculate(n - 1).add( this.calculate(n - 2));
         return this.data[n];
     }
 
@@ -68,28 +61,15 @@ public class Fibonacci {
         return this.data;
     }
 
-    /**
-     * A static utility class for finding the fibonacci number for any value.
-     * @param n: the i argument for calculation the fibonacci number using the Phi formula.
-     * @return The calculated the fibonacci number.
-     *
-     */
-	public static long calculatePhi(long n) {
-		double phi = (1 + Math.sqrt(5)) / 2;
-		double exp = n * Math.log10(phi) - Math.log10(5) / 2;
-		int fib = (int) Math.round(Math.pow(10, exp));
-
-		return fib;
-	}
-
     public static void main(String[] strings) throws IOException {
         StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
         // Control D to quit.
         while(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
             int n = (int)streamTokenizer.nval;
-            Fibonacci fibonacci  = new Fibonacci(n);
-            fibonacci.find();
-            System.out.println(fibonacci.getData()[n]);
+            FibonacciRec fibonacciBI  = new FibonacciRec(n);
+            fibonacciBI.find();
+            System.out.println(fibonacciBI.getData()[n]);
         }
     }
 }
+
