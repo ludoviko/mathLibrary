@@ -28,7 +28,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	FactorsTest.class,
 	FibonacciTest.class,
 	FibonacciRecTest.class,
-    FibonacciRec2Test.class,
+    Fibonacci2Test.class,
 	FindRepeatingDecimalTest.class,
 	FractionBITest.class,
 	FractionTest.class,

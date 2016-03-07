@@ -11,41 +11,53 @@ import java.util.List;
 /**
  * Class for calculation the fibonacci number up to a given number.
  * Intermediate -lower- values are saved in a list of Big Integers.
- * No memoization algorithm.
+ * Iterative algorithm, no memoization.
  */
-public class FibonacciRec2 {
+public class Fibonacci2 {
     private List<BigInteger> data;
     private int n;
 
     /**
-     * @param n: the parameter for the fibonacci constructor.
+     * @param n: the target fibonacci arguments, it goes from zero to any positive whole number.
      */
-    public FibonacciRec2(int n) {
+    public Fibonacci2(int n) {
         this.data = new ArrayList<BigInteger>();
         this.n = n;
-        this.data.add(new BigInteger("0"));
-        this.data.add(new BigInteger("1"));
     }
 
     /**
-     * This method triggers the search of the fibonacci value for n.
+     * This method triggers the search of the fibonacci value for n and lesser values.
      */
     public void find() {
-         this.calculate(this.n, new BigInteger("0"), new BigInteger("1"));
+        this.data.clear();
+        this.calculate();
+    }
+
+    private void calculate() {
+        // Calculate the fibonacci numbers using values from z up to this.n.
+        for (int i = 0; i <= this.n; i++) {
+            nextFibonacci();
+        }
     }
 
     /**
-     * @param index: the i argument for calculation the fibonacci number using a recursive call.
-     * @return The calculated the fibonacci number.
-     * The list of calculated values is set accordingly with intermediate values.
+     * A method for finding the next fibonacci number.
+     * It updates the list of fibonacci numbers.
+     *
+     * @return the last calculated fibonacci number.
      */
-    private void calculate(int index, BigInteger value1, BigInteger value2) {
-        if (index <= 1 ) {
+    public BigInteger nextFibonacci() {
+        if (this.data.size() == 0) {
+            // Base case: zero.
+            this.data.add(new BigInteger("0"));
+        } else if (this.data.size() == 1) {
+            // Base case: one.
+            this.data.add(new BigInteger("1"));
         } else {
-            data.add(value1.add(value2));
-            this.calculate(index - 1, value2, value1.add(value2));
+            this.data.add( this.data.get(this.data.size()-1).add(this.data.get(this.data.size()-2)) );
         }
-    }
+        return this.data.get(this.data.size()-1);
+    };
 
     /**
      * A static utility class for finding the fibonacci number for any value.
@@ -70,22 +82,23 @@ public class FibonacciRec2 {
 
     public static void main(String[] strings) throws IOException {
         StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-        FibonacciRec2 f;
+        Fibonacci2 f;
 
-/*
         // Testing instance method.
+        // Control D to quit.
         while(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
             int n = (int)streamTokenizer.nval;
-            f  = new FibonacciRec2(n);
+            f  = new Fibonacci2(n);
             f.find();
             System.out.println(f.getData().get(n));
         }
-*/
-        // Control D to quit.
+/*
         // Testing static utility method.
+        // Control D to quit.
         while(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
             int n = (int)streamTokenizer.nval;
-            System.out.println(FibonacciRec2.getElement(n));
+            System.out.println(FibonacciRecursive.getElement(n));
         }
+*/
     }
 }

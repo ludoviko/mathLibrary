@@ -8,10 +8,13 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static junit.framework.TestCase.assertEquals;
 
+
 @RunWith(Parameterized.class)
-public class FibonacciRec2Test {
+public class Fibonacci2Test {
     @Parameterized.Parameters(name = "{index}: fib({0})={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
@@ -35,21 +38,39 @@ public class FibonacciRec2Test {
     private int input;
     private BigInteger expected;
 
-    public FibonacciRec2Test(int input, BigInteger expected) {
+    public Fibonacci2Test(int input, BigInteger expected) {
         this.input = input;
         this.expected= expected;
     }
 
-    @Test(timeout = 3000)
+    @Test()
     public void test() {
-        FibonacciRec2 fibonacci = new FibonacciRec2(100);
+        Fibonacci2 fibonacci = new Fibonacci2(15);
         fibonacci.find();
         assertEquals(expected, fibonacci.getData().get(input));
     }
 
     @Test(timeout = 3000)
     public void testStaticMethod() {
-        assertEquals(expected, FibonacciRec2.getElement(input));
+        assertEquals(expected, Fibonacci2.getElement(input));
     }
 
+    @Test(timeout = 3000)
+    public void testNextMethod() {
+        Fibonacci2 fib = new Fibonacci2(0);
+        assertThat(fib.nextFibonacci(), is(new BigInteger("0")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("1")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("1")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("2")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("3")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("5")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("8")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("13")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("21")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("34")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("55")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("89")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("144")));
+        assertThat(fib.nextFibonacci(), is(new BigInteger("233")));
+    }
 }
