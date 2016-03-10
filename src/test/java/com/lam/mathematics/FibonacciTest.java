@@ -45,8 +45,8 @@ public class FibonacciTest {
 
     @Test()
     public void test() {
-        Fibonacci fibonacci = new Fibonacci(15);
-        fibonacci.find();
+        Fibonacci fibonacci = new Fibonacci();
+        fibonacci.find(50);
         assertEquals(expected, fibonacci.getData().get(input));
     }
 
@@ -57,7 +57,7 @@ public class FibonacciTest {
 
     @Test(timeout = 3000)
     public void testNextMethod() {
-        Fibonacci fib = new Fibonacci(0);
+        Fibonacci fib = new Fibonacci();
         assertThat(fib.nextFibonacci(), is(new BigInteger("0")));
         assertThat(fib.nextFibonacci(), is(new BigInteger("1")));
         assertThat(fib.nextFibonacci(), is(new BigInteger("1")));
