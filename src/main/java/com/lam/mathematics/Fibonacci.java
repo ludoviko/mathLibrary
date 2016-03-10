@@ -15,27 +15,26 @@ import java.util.List;
  */
 public class Fibonacci {
     private List<BigInteger> data;
-    private int n;
 
     /**
-     * @param n: the target fibonacci arguments, it goes from zero to any positive whole number.
+     * The non argument constructor.
      */
-    public Fibonacci(int n) {
+    public Fibonacci() {
         this.data = new ArrayList<BigInteger>();
-        this.n = n;
     }
 
     /**
      * This method triggers the search of the fibonacci value for n and lesser values.
+     * @param n: a whole number that represents the target value.
      */
-    public void find() {
+    public void find(int n) {
         this.data.clear();
-        this.calculate();
+        this.calculate(n);
     }
 
-    private void calculate() {
+    private void calculate(int n) {
         // Calculate the fibonacci numbers using values from zero up to this.n.
-        for (int i = 0; i <= this.n; i++) {
+        for (int i = 0; i <= n; i++) {
             nextFibonacci();
         }
     }
@@ -104,8 +103,8 @@ public class Fibonacci {
         // Control D to quit.
         while(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
             int n = (int)streamTokenizer.nval;
-            f  = new Fibonacci(n);
-            f.find();
+            f  = new Fibonacci();
+            f.find(n);
             System.out.println(f.getData().get(n));
         }
 /*
