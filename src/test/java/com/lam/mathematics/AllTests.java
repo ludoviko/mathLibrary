@@ -43,6 +43,7 @@ import org.junit.runners.Suite.SuiteClasses;
     PisanoPeriodTest.class,
 	PointTest.class,
 	PrimesTest.class,
+    ShiftCipherTest.class,
 	SortDigitsTest.class,
 	SpiralGridTest.class,
 	SquareRootOfTwoConvergentsTest.class
