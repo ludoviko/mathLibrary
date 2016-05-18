@@ -3,7 +3,7 @@ package com.lam.mathematics.encryption;
 /**
  * Class for encrypting and decrypting a message using a one char.
  *
- * Improvements needed: encrypt using a word of any lenght.
+ * Improvements needed: encrypt using a word of any length.
  */
 public class ShiftCipher {
     // 26 letters for the Engish alphabet.
