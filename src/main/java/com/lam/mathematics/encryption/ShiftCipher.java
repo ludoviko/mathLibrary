@@ -19,11 +19,11 @@ public class ShiftCipher {
     }
 
     public ShiftCipher(String message) {
-        this.message = message;
+        this.message = message.toLowerCase();
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.message = message.toLowerCase();
     }
 
     public String encrypt(char key) {
