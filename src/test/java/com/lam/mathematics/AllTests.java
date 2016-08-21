@@ -18,7 +18,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	BouncyNumberTest.class,
 	ChampernownesConstantTest.class,
 	CircleTest.class,
-	CollatzSequenceTest.class,
+	CollatzConjectureTest.class,
 	CheckIsPrimeTest.class,
 	CombinatoricsTest.class,
 	DigitsTest.class,
