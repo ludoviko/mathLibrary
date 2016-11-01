@@ -26,7 +26,7 @@ public class CollatzConjecture {
     private Map<Long, Long> cache;
 
     public CollatzConjecture() {
-        cache = new HashMap<>();
+        cache = new HashMap<Long, Long>();
         cache.put(1L, 1L);
     }
 
@@ -77,7 +77,7 @@ public class CollatzConjecture {
 
             list = main.findSequence(a);
             list_2 = main.findSequence(b);
-            list_3 = new ArrayList<>();
+            list_3 = new ArrayList<Long>();
 
             list_3.addAll(list_2);
 
