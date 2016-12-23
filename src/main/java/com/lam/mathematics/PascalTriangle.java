@@ -7,6 +7,7 @@ import com.lam.annotation.Note;
 
 
 @Note(note="Testing missing")
+@Deprecated
 public class PascalTriangle {
 	
 	/**
@@ -25,7 +26,7 @@ public class PascalTriangle {
 	 * 
 	 * 	Find the Pascal elements from the Pascal Triangle that are in a given row. 
 	 * 
-	 * @param rows: The row is zero based. 
+	 * @param row: The row is zero based.
 	 * @return: an array with the row's elements.
 	 */
 	public long[] findPascalRow(int row) {
