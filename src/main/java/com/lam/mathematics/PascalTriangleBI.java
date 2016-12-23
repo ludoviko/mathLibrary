@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class PascalTriangleBI {
 	
 	/**
@@ -23,7 +24,7 @@ public class PascalTriangleBI {
 	 * 	Find the Pascal elements from the Pascal Triangle that are in a given row. 
      * 
 	 * 
-	 * @param rows: The row is zero based. 
+	 * @param row: The row is zero based.
 	 * @return: an array with the row's elements.
 	 */
 	public BigInteger[] findPascalRow(int row) {
