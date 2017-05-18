@@ -23,7 +23,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	CombinatoricsTest.class,
 	DigitsTest.class,
 	EulersTotientFunctionTest.class,
-	FactorialTest.class,
+    FactorialParamTest.class,
 	FactorizeTest.class,
 	FactorsTest.class,
     FibonacciModuleTest.class,
