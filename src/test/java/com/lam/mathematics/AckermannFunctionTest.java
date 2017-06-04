@@ -25,37 +25,6 @@ public class AckermannFunctionTest {
 	}
 
 	@Test
-	public void testFunction() {
-		Assert.assertEquals(1, a.a(0, 0));
-		Assert.assertEquals(2, a.a(0, 1));
-		Assert.assertEquals(3, a.a(0, 2));
-		Assert.assertEquals(4, a.a(0, 3));
-		Assert.assertEquals(5, a.a(0, 4));
-
-		Assert.assertEquals(2, a.a(1, 0));
-		Assert.assertEquals(3, a.a(1, 1));
-		Assert.assertEquals(4, a.a(1, 2));
-		Assert.assertEquals(5, a.a(1, 3));
-		Assert.assertEquals(6, a.a(1, 4));
-
-		Assert.assertEquals(3, a.a(2, 0));
-		Assert.assertEquals(5, a.a(2, 1));
-		Assert.assertEquals(7, a.a(2, 2));
-		Assert.assertEquals(9, a.a(2, 3));
-		Assert.assertEquals(11, a.a(2, 4));
-
-		Assert.assertEquals(5, a.a(3, 0));
-		Assert.assertEquals(13, a.a(3, 1));
-		Assert.assertEquals(29, a.a(3, 2));
-		Assert.assertEquals(61, a.a(3, 3));
-		Assert.assertEquals(125, a.a(3, 4));
-
-		Assert.assertEquals(13, a.a(4, 0));
-		// Overflow
-//		Assert.assertEquals(65533, a.AckermannFunction(4, 1));
-	}
-
-	@Test
 	public void testFunctionBI() {
 		BigInteger zero = new BigInteger("0");
 		BigInteger one = new BigInteger("1");
