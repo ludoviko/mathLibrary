@@ -15,23 +15,6 @@ public class Combinatorics {
         return factorial;
     }
 
-    public static BigInteger factorialBI(int n) {
-        assert n >= 0;
-
-        BigInteger[] table = new BigInteger[(int) (n + 1)];
-
-        table[0] = BigInteger.ONE;
-        if (n > 0) {
-            table[1] = BigInteger.ONE;
-        }
-
-        for (int i = 2; i <= n; i++) {
-            table[i] = new BigInteger(i + "").multiply(table[i-1]);
-        }
-
-        return table[n];
-    }
-
     // Permutations are arrangements.
     @Deprecated
     public static long permutations(int n, int m) {
@@ -53,6 +36,23 @@ public class Combinatorics {
         long factorial_m = factorial(m);
 
         return permutation / factorial_m;
+    }
+
+    public static BigInteger factorialBI(int n) {
+        assert n >= 0;
+
+        BigInteger[] table = new BigInteger[(int) (n + 1)];
+
+        table[0] = BigInteger.ONE;
+        if (n > 0) {
+            table[1] = BigInteger.ONE;
+        }
+
+        for (int i = 2; i <= n; i++) {
+            table[i] = new BigInteger(i + "").multiply(table[i-1]);
+        }
+
+        return table[n];
     }
 
     public static BigInteger permutationsBI(int n, int m) {
