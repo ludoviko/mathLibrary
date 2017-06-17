@@ -10,13 +10,6 @@ import com.lam.mathematics.Combinatorics;
 
 public class CombinatoricsTest  {
 	@Test
-	public void testPermutations() {
-//		Assert.assertEquals(, Combinatorics.permutations(, ));
-		Assert.assertEquals(6, Combinatorics.permutations(3, 2));
-		Assert.assertEquals(5040, Combinatorics.permutations(10, 4));
-	}
-
-	@Test
 	public void testPermutationsBI() {
 //		Assert.assertEquals(new BigInteger(""), Combinatorics.permutationsBI(, ));
 		Assert.assertEquals(new BigInteger("6"), Combinatorics.permutationsBI(3, 2));
@@ -24,36 +17,12 @@ public class CombinatoricsTest  {
 		Assert.assertEquals(new BigInteger("10068347520"), Combinatorics.permutationsBI(49, 6));
 	}
 	
-	@Test
-	public void testCombinations() {
-		Assert.assertEquals(13983816, Combinatorics.combinations(49, 6));
-		Assert.assertEquals(10, Combinatorics.combinations(5, 3));
-	}
 
 	@Test
 	public void testCombinationsBI() {
 //		Assert.assertEquals(new BigInteger(""), Combinatorics.combinationsBI(, ));
 		Assert.assertEquals(new BigInteger("10"), Combinatorics.combinationsBI(5, 3));
 		Assert.assertEquals(new BigInteger("13983816"), Combinatorics.combinationsBI(49, 6));
-	}
-	
-	@Test
-	public void testPermutationsException() {
-		try {
-			Combinatorics.permutations(0, 4);
-			Assert.fail("The class failed to throw an exception");
-		} catch (IllegalArgumentException iE) {
-		}
-		try {
-			Combinatorics.permutations(5, 6);
-			Assert.fail("The class failed to throw an exception");
-		} catch (IllegalArgumentException iE) {
-		}
-//		try {
-//			Combinatorics.permutations(4, 0);
-//			fail("The class failed to throw an exception");
-//		} catch (IllegalArgumentException iE) {
-//		}
 	}
 	
 	public void testfactorial() {
@@ -72,6 +41,4 @@ public class CombinatoricsTest  {
 		Assert.assertEquals(new BigInteger("6"), Combinatorics.factorialBI(3));
 		Assert.assertEquals(new BigInteger("24"), Combinatorics.factorialBI(4));
 	}
-
-	
 }
