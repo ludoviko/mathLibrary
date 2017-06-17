@@ -3,7 +3,6 @@ package com.lam.mathematics;
 import java.math.BigInteger;
 
 public class Combinatorics {
-
     @Deprecated
     public static long factorial(long n) {
         long factorial = 1;
@@ -34,6 +33,7 @@ public class Combinatorics {
     }
 
     // Permutations are arrangements.
+    @Deprecated
     public static long permutations(int n, int m) {
         checkArgument(n, m);
 
@@ -42,6 +42,17 @@ public class Combinatorics {
             factorial *= i;
         }
         return factorial;
+    }
+
+    //	n! / (r!(n−r)!)
+    @Deprecated
+    public static long combinations(int n, int m) {
+        checkArgument(n, m);
+
+        long permutation = permutations(n, m);
+        long factorial_m = factorial(m);
+
+        return permutation / factorial_m;
     }
 
     public static BigInteger permutationsBI(int n, int m) {
@@ -56,15 +67,6 @@ public class Combinatorics {
     }
 
     //	n! / (r!(n−r)!)
-    public static long combinations(int n, int m) {
-        checkArgument(n, m);
-
-        long permutation = permutations(n, m);
-        long factorial_m = factorial(m);
-
-        return permutation / factorial_m;
-    }
-
     public static BigInteger combinationsBI(int n, int m) {
         checkArgument(n, m);
 
@@ -84,6 +86,10 @@ public class Combinatorics {
         if (n <= 0 || m <= 0 || n - m < 0) {
             throw new IllegalArgumentException("n and m must be greater than 0 and n >= m. ");
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(combinationsBI(5, 2));
     }
 
 }
