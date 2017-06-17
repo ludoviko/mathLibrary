@@ -25,14 +25,6 @@ public class CombinatoricsTest  {
 		Assert.assertEquals(new BigInteger("13983816"), Combinatorics.combinationsBI(49, 6));
 	}
 	
-	public void testfactorial() {
-		Assert.assertEquals(1, Combinatorics.factorial(0));
-		Assert.assertEquals(1, Combinatorics.factorial(1));
-		Assert.assertEquals(2, Combinatorics.factorial(2));
-		Assert.assertEquals(6, Combinatorics.factorial(3));
-		Assert.assertEquals(24, Combinatorics.factorial(4));
-	}
-
 	@Test
 	public void testfactorialBI() {
 		Assert.assertEquals(new BigInteger("1"), Combinatorics.factorialBI(0));
