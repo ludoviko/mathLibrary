@@ -10,6 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
     // From here.
 	AbundantNumbersTest.class,
 	AmicableNumberTest.class,
+	AngleTest.class,
 	ArchimedesTest.class,
 	ArrayUtilTest.class,
 	BaseConverterTest.class,
