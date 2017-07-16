@@ -47,7 +47,8 @@ import org.junit.runners.Suite.SuiteClasses;
     ShiftCipherTest.class,
 	SortDigitsTest.class,
 	SpiralGridTest.class,
-	SquareRootOfTwoConvergentsTest.class
+	SquareRootOfTwoConvergentsTest.class,
+	VectorTest.class
 })
 
 public class AllTests {
