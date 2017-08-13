@@ -12,26 +12,27 @@ public class GCD {
 		return findRecursive(b, a % b);
 	}
 
-	public static long find(long a, long b) {
-		long x;
-		
-		while ( b != 0) {
-                x = a % b;
-                a = b;
-                b = x;
-		}
-		
-		return (a);
+	public static long find(long a, long b ) {
+		long remainder;
+
+		do {
+			remainder = a % b;
+			a = b;
+			b = remainder;
+		} while (remainder != 0);
+
+		return a;
 	}
 
+
 	public static BigInteger find(BigInteger a, BigInteger b) {
-		BigInteger x;
+		BigInteger remainder;
 		
-		while ( ! b.equals(BigInteger.ZERO)) {
-			x = a.mod(b);
+		do {
+			remainder = a.mod(b);
 			a = b;
-			b = x;
-		}
+			b = remainder;
+		} while (! remainder.equals(BigInteger.ZERO));
 
 		return a;
 	}
