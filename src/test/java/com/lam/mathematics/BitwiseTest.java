@@ -33,6 +33,7 @@ public class BitwiseTest {
         Assert.assertThat("Should be the same.", Bitwise.countBits(2), CoreMatchers.is(1));
         Assert.assertThat("Should be the same.", Bitwise.countBits(3), CoreMatchers.is(2));
         Assert.assertThat("Should be the same.", Bitwise.countBits(31), CoreMatchers.is(5));
+		Assert.assertThat("Should be the same.", Bitwise.countBits(-1), CoreMatchers.is(32));
 //        Assert.assertThat("Should be the same.", Bitwise.countBits(), CoreMatchers.is(1));
 	}
 
