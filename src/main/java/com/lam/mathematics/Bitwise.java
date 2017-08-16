@@ -12,9 +12,9 @@ public class Bitwise {
         // Position: Zero based, starting from right.
         int bits = 0;
 
-        while (n  > 0) {
+        while (n != 0) {
             bits +=  n & 1;
-            n = n >> 1;
+            n = n >>> 1;
         }
 
         return bits;
@@ -28,5 +28,6 @@ public class Bitwise {
         System.out.println(findBit(13, 4));
         System.out.println(countBits(13));
         System.out.println(countBits(31));
+        System.out.println(countBits(-1));
     }
 }
