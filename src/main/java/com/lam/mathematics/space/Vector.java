@@ -121,5 +121,17 @@ public class Vector implements Comparable<Vector> {
         for ( Vector v :  changes ) {
             System.out.format("%s ", v.name);
         }
+
+        Angle angle;
+        angle = new Angle(281 * Math.PI /180 );
+        Vector v= new Vector("281", angle, 20);
+        System.out.println(v);
+
+        Point p1 = new Point(2, 6);
+        Point p2 = new Point(6, -3);
+
+        System.out.println(p1.distance(p2));
+
+
     }
 }
