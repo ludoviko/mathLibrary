@@ -42,6 +42,7 @@ public class RandomInteger {
     /**
      * @return get next random long integer from the interval  [from, upTo].
      */
+
     public long next() {
         long next = (int) (Math.random() * (this.upTo + 1 - this.from)) + this.from;
 
