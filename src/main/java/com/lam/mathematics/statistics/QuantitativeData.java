@@ -1,6 +1,8 @@
 package com.lam.mathematics.statistics;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Usuario on 07/07/2017.
@@ -15,11 +17,17 @@ public class QuantitativeData {
     private double unbiasedDeviation;
     private double firstQuartile;
     private double thirdQuartile;
+    private double sumDeviations;
+
+    public QuantitativeData(Map<Double, Integer> histogram) throws NoSuchMethodException {
+        this(toArray(histogram));
+    }
 
     public QuantitativeData(double... data) {
         this.data = data;
         Arrays.sort(this.data);
         mean();
+        this.sumDeviations();
         this.variance();
         this.standardDeviation();
         this.sampleVariance();
@@ -27,6 +35,27 @@ public class QuantitativeData {
         this.median = median(this.data);
         this.firstQuartile = firstQuartile(this.data);
         this.thirdQuartile = thirdQuartile(this.data);
+    }
+
+    private static double[] toArray(Map<Double, Integer> histogram) {
+        Set<Double> keys = histogram.keySet();
+
+        int size = 0;
+        for (Double key : keys) {
+            size += histogram.get(key);
+        }
+
+        double[] array = new double[size];
+
+        int index = 0;
+        for (Double key : keys) {
+            int frequency = histogram.get(key);
+            for (int i = 0; i < frequency; i++) {
+                array[index++] = key;
+            }
+        }
+
+        return array;
     }
 
     private static double median(double... a) {
@@ -51,7 +80,7 @@ public class QuantitativeData {
         return median(secondHalf);
     }
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         double[] data = new double[]{2, 3, 3, 4, 4, 4, 4, 5, 5, 6, 7};
 
         QuantitativeData quantitativeData = new QuantitativeData(data);
@@ -123,22 +152,20 @@ public class QuantitativeData {
         this.mean = s / data.length;
     }
 
-    public void variance() {
-        double v = 0;
+    private void sumDeviations() {
+        this.sumDeviations = 0;
 
         for (double i : this.data) {
-            v += (mean - i) * (mean - i);
+            this.sumDeviations += (mean - i) * (mean - i);
         }
-        this.variance = v / data.length;
     }
 
-    public void sampleVariance() {
-        double v = 0;
+    private void variance() {
+        this.variance = this.sumDeviations / data.length;
+    }
 
-        for (double i : data) {
-            v += (mean - i) * (mean - i);
-        }
-        this.sampleVariance = v / (data.length - 1);
+    private void sampleVariance() {
+        this.sampleVariance = this.sumDeviations / (data.length - 1);
     }
 
     // Population standard deviation.
@@ -147,7 +174,7 @@ public class QuantitativeData {
     }
 
     // Sample standard deviation.
-    public void unbiasedDeviation() {
+    private void unbiasedDeviation() {
         unbiasedDeviation = Math.sqrt(sampleVariance);
     }
 }
