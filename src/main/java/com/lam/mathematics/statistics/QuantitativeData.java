@@ -46,9 +46,9 @@ public class QuantitativeData {
     }
 
     private static double thirdQuartile(double... a) {
-        double[] thirdHalf = new double[a.length / 2];
-        System.arraycopy(a, a.length / 2 + 1, thirdHalf, 0, a.length / 2);
-        return median(thirdHalf);
+        double[] secondHalf = new double[a.length / 2];
+        System.arraycopy(a, (a.length + 1) / 2, secondHalf, 0, a.length / 2);
+        return median(secondHalf);
     }
 
     public static void main(String[] args) {
