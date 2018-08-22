@@ -22,7 +22,7 @@ public class QuantitativeDataSampleVarianceParamTest {
         this.expected = expected;
     }
 
-    @Parameterized.Parameters(name = " {index}: QuantitativeData Test Variance ( {0} ) = {1} ")
+    @Parameterized.Parameters(name = " {index}: QuantitativeData Test Sample Variance ( {0} ) = {1} ")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {new double[]{8, 13, 5, 10}, 11.3333333},
