@@ -1,6 +1,7 @@
 package com.lam.mathematics.statistics;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class QuantitativeData {
     private double thirdQuartile;
     private double sumDeviations;
 
-    public QuantitativeData(Map<Double, Integer> histogram) throws NoSuchMethodException {
+    public QuantitativeData(Map<Double, Integer> histogram) {
         this(toArray(histogram));
     }
 
@@ -80,10 +81,22 @@ public class QuantitativeData {
         return median(secondHalf);
     }
 
-    private static void main(String[] args) {
-        double[] data = new double[]{2, 3, 3, 4, 4, 4, 4, 5, 5, 6, 7};
+    public static void main(String[] args) {
+        Map<Double, Integer> map = new HashMap<Double, Integer>();
 
-        QuantitativeData quantitativeData = new QuantitativeData(data);
+        map.put(60d, 35);
+        map.put(61d, 33);
+        map.put(62d, 45);
+        map.put(63d, 4);
+        map.put(64d, 3);
+        map.put(65d, 4);
+        map.put(66d, 7);
+        map.put(67d, 4);
+
+
+//        double[] data = new double[]{2, 3, 3, 4, 4, 4, 4, 5, 5, 6, 7};
+
+        QuantitativeData quantitativeData = new QuantitativeData(map);
 
         System.out.println("data: " + quantitativeData);
     }
