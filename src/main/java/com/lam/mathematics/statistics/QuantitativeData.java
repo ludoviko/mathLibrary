@@ -1,9 +1,6 @@
 package com.lam.mathematics.statistics;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Usuario on 07/07/2017.
@@ -19,6 +16,7 @@ public class QuantitativeData {
     private double firstQuartile;
     private double thirdQuartile;
     private double sumDeviations;
+    private Map<Double, Integer> mode;
 
     public QuantitativeData(Map<Double, Integer> histogram) {
         this(toArray(histogram));
@@ -36,6 +34,7 @@ public class QuantitativeData {
         this.median = median(this.data);
         this.firstQuartile = firstQuartile(this.data);
         this.thirdQuartile = thirdQuartile(this.data);
+        this.mode();
     }
 
     private static double[] toArray(Map<Double, Integer> histogram) {
@@ -81,39 +80,20 @@ public class QuantitativeData {
         return median(secondHalf);
     }
 
-    public static void main(String[] args) {
-        Map<Double, Integer> map = new HashMap<Double, Integer>();
-
-        map.put(60d, 35);
-        map.put(61d, 33);
-        map.put(62d, 45);
-        map.put(63d, 4);
-        map.put(64d, 3);
-        map.put(65d, 4);
-        map.put(66d, 7);
-        map.put(67d, 4);
-
-
-//        double[] data = new double[]{2, 3, 3, 4, 4, 4, 4, 5, 5, 6, 7};
-
-        QuantitativeData quantitativeData = new QuantitativeData(map);
-
-        System.out.println("data: " + quantitativeData);
-    }
-
     @Override
     public String toString() {
         return "QuantitativeData{" +
                 "data=" + Arrays.toString(data) +
-                ", mean=" + mean +
                 ", median=" + median +
+                ", mean=" + mean +
                 ", variance=" + variance +
                 ", sampleVariance=" + sampleVariance +
                 ", standardDeviation=" + standardDeviation +
                 ", unbiasedDeviation=" + unbiasedDeviation +
-                ", median=" + median +
                 ", firstQuartile=" + firstQuartile +
                 ", thirdQuartile=" + thirdQuartile +
+                ", sumDeviations=" + sumDeviations +
+                ", mode=" + mode +
                 '}';
     }
 
@@ -190,6 +170,60 @@ public class QuantitativeData {
     private void unbiasedDeviation() {
         unbiasedDeviation = Math.sqrt(sampleVariance);
     }
+
+    private void mode() {
+        this.mode = new HashMap<Double, Integer>();
+        Map<Double, Integer> auxMap = new HashMap<Double, Integer>();
+
+        for (double element : this.data) {
+            auxMap.put(element, auxMap.getOrDefault(element, 0) + 1);
+        }
+
+        Set<Map.Entry<Double, Integer>> entries = auxMap.entrySet();
+
+        Collection<Integer> values = auxMap.values();
+        Integer max = 1;
+        for (Integer value : values) {
+            if (value > max) {
+                max = value;
+            }
+        }
+
+        if (max > 1) {
+            for (Map.Entry<Double, Integer> entry : entries) {
+                if (entry.getValue() == max) {
+                    this.mode.put(entry.getKey(), max);
+                }
+            }
+        } else {
+        }
+    }
+
+    public Map<Double, Integer> getMode() {
+        return mode;
+    }
+
+    public static void main(String[] args) {
+        Map<Double, Integer> map = new HashMap<Double, Integer>();
+
+        map.put(60d, 35);
+        map.put(61d, 33);
+        map.put(62d, 45);
+        map.put(63d, 4);
+        map.put(64d, 3);
+        map.put(65d, 4);
+        map.put(66d, 7);
+        map.put(67d, 4);
+
+//        QuantitativeData quantitativeData = new QuantitativeData(map);
+
+        double[] data = new double[]{2120, 3040, 2180, 1892, 923, 9231, 8231};
+
+        QuantitativeData quantitativeData = new QuantitativeData(data);
+
+        System.out.println("data: " + quantitativeData);
+    }
+
 }
 
 
