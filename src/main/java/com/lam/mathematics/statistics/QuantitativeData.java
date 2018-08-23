@@ -16,6 +16,7 @@ public class QuantitativeData {
     private double firstQuartile;
     private double thirdQuartile;
     private double sumDeviations;
+    private double coefficientOfvariation;
     private Map<Double, Integer> mode;
 
     public QuantitativeData(Map<Double, Integer> histogram) {
@@ -35,6 +36,7 @@ public class QuantitativeData {
         this.firstQuartile = firstQuartile(this.data);
         this.thirdQuartile = thirdQuartile(this.data);
         this.mode();
+        this.coefficientOfVariation();
     }
 
     private static double[] toArray(Map<Double, Integer> histogram) {
@@ -93,6 +95,7 @@ public class QuantitativeData {
                 ", firstQuartile=" + firstQuartile +
                 ", thirdQuartile=" + thirdQuartile +
                 ", sumDeviations=" + sumDeviations +
+                ", coefficientOfvariation=" + coefficientOfvariation +
                 ", mode=" + mode +
                 '}';
     }
@@ -135,6 +138,10 @@ public class QuantitativeData {
 
     public double getInterQuartileRange() {
         return this.thirdQuartile - this.firstQuartile;
+    }
+
+    public double getCoefficientOfvariation() {
+        return coefficientOfvariation;
     }
 
     private void mean() {
@@ -203,6 +210,17 @@ public class QuantitativeData {
         return mode;
     }
 
+    /**
+     * By finding the square root of the variance (the standard deviation),
+     * and dividing the standard deviation by the mean,
+     * you can find the coefficient of variation.
+     * Comparing the coefficients of variation allows you to directly compare the
+     * data clustering of each set, since a higher CV% means the data is more spread out.
+     */
+    private void coefficientOfVariation() {
+        this.coefficientOfvariation = (100 * this.standardDeviation) / this.getMean();
+    }
+
     public static void main(String[] args) {
         Map<Double, Integer> map = new HashMap<Double, Integer>();
 
@@ -217,7 +235,7 @@ public class QuantitativeData {
 
 //        QuantitativeData quantitativeData = new QuantitativeData(map);
 
-        double[] data = new double[]{2120, 3040, 2180, 1892, 923, 9231, 8231};
+        double[] data = new double[]{10, 11.1, 10.33, 10.63, 11, 11.2, 11.36, 10.46};
 
         QuantitativeData quantitativeData = new QuantitativeData(data);
 
