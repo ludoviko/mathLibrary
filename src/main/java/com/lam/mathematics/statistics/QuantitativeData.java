@@ -8,6 +8,7 @@ import java.util.*;
 public class QuantitativeData {
     private double[] data;
     private double median;
+    private double meanAbsoluteDeviation;
     private double mean;
     private double variance;
     private double sampleVariance;
@@ -32,6 +33,7 @@ public class QuantitativeData {
         this.standardDeviation();
         this.sampleVariance();
         this.unbiasedDeviation();
+        this.meanAbsoluteDeviation();
         this.median = median(this.data);
         this.firstQuartile = firstQuartile(this.data);
         this.thirdQuartile = thirdQuartile(this.data);
@@ -82,24 +84,6 @@ public class QuantitativeData {
         return median(secondHalf);
     }
 
-    @Override
-    public String toString() {
-        return "QuantitativeData{" +
-                "data=" + Arrays.toString(data) +
-                ", median=" + median +
-                ", mean=" + mean +
-                ", variance=" + variance +
-                ", sampleVariance=" + sampleVariance +
-                ", standardDeviation=" + standardDeviation +
-                ", unbiasedDeviation=" + unbiasedDeviation +
-                ", firstQuartile=" + firstQuartile +
-                ", thirdQuartile=" + thirdQuartile +
-                ", sumDeviations=" + sumDeviations +
-                ", coefficientOfvariation=" + coefficientOfvariation +
-                ", mode=" + mode +
-                '}';
-    }
-
     public double[] getData() {
         return data;
     }
@@ -144,6 +128,10 @@ public class QuantitativeData {
         return coefficientOfvariation;
     }
 
+    public double getMeanAbsoluteDeviation() {
+        return this.meanAbsoluteDeviation;
+    }
+
     private void mean() {
         double s = 0;
         for (double i : data) {
@@ -155,8 +143,8 @@ public class QuantitativeData {
     private void sumDeviations() {
         this.sumDeviations = 0;
 
-        for (double i : this.data) {
-            this.sumDeviations += (mean - i) * (mean - i);
+        for (double each : this.data) {
+            this.sumDeviations += (mean - each) * (mean - each);
         }
     }
 
@@ -221,6 +209,37 @@ public class QuantitativeData {
         this.coefficientOfvariation = (100 * this.standardDeviation) / this.getMean();
     }
 
+    public void meanAbsoluteDeviation() {
+        this.meanAbsoluteDeviation = 0;
+
+        for (double each : this.data) {
+            this.meanAbsoluteDeviation += Math.abs(mean - each);
+        }
+
+        this.meanAbsoluteDeviation = this.meanAbsoluteDeviation / this.data.length;
+    }
+
+
+    @Override
+    public String toString() {
+        return "QuantitativeData{" +
+                "data=" + Arrays.toString(data) +
+                ", median=" + median +
+                ", mean=" + mean +
+                ", variance=" + variance +
+                ", sampleVariance=" + sampleVariance +
+                ", standardDeviation=" + standardDeviation +
+                ", unbiasedDeviation=" + unbiasedDeviation +
+                ", meanAbsoluteDeviation=" + meanAbsoluteDeviation +
+                ", firstQuartile=" + firstQuartile +
+                ", thirdQuartile=" + thirdQuartile +
+                ", inter quartile range=" + this.getInterQuartileRange() +
+                ", sumDeviations=" + sumDeviations +
+                ", coefficientOfvariation=" + coefficientOfvariation +
+                ", mode=" + mode +
+                '}';
+    }
+
     public static void main(String[] args) {
         Map<Double, Integer> map = new HashMap<Double, Integer>();
 
@@ -235,7 +254,7 @@ public class QuantitativeData {
 
 //        QuantitativeData quantitativeData = new QuantitativeData(map);
 
-        double[] data = new double[]{10, 11.1, 10.33, 10.63, 11, 11.2, 11.36, 10.46};
+        double[] data = new double[]{5, 5, 3, 3};
 
         QuantitativeData quantitativeData = new QuantitativeData(data);
 
