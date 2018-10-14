@@ -1,28 +1,22 @@
 package com.lam.mathematics;
 
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.lam.mathematics.AmicableNumber;
-
-public class AmicableNumberTest extends TestCase {
+public class AmicableNumberTest {
 
 	AmicableNumber ami;
 	
 	@Before
-	protected void setUp() throws Exception {
-		super.setUp();
+    public void setUp() throws Exception {
 		ami = new AmicableNumber();
 	}
 
 	@After
-	protected void tearDown() throws Exception {
-		super.tearDown();
+    public void tearDown() throws Exception {
 		ami = null;
 	}
 
