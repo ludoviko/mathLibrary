@@ -6,6 +6,8 @@ import java.util.*;
  * Created by Usuario on 07/07/2017.
  */
 public class QuantitativeData {
+    public static final double MILD_FACTOR_OUTLIER = 1.5;
+    public static final double EXTREME_FACTOR_OUTLIER = 3;
     private double[] data;
     private double median;
     private double meanAbsoluteDeviation;
@@ -39,6 +41,39 @@ public class QuantitativeData {
         this.thirdQuartile = thirdQuartile(this.data);
         this.mode();
         this.coefficientOfVariation();
+    }
+
+    /**
+     * A commonly used rule says that a data point is an outlier if it is more than 1.5 * IQR above the third quartile
+     * or below the first quartile. Said differently, low outliers are below Q1-1.5 * IQR
+     * ​and high outliers are above Q1-1.5 * IQR
+     */
+    public List<Double> findLowOutliers() {
+        List<Double> oultiers = new ArrayList<Double>();
+
+        for (double element : data) {
+            if (element < this.firstQuartile - 1.5 * this.getInterQuartileRange()) {
+                oultiers.add(element);
+            }
+        }
+        return oultiers;
+    }
+
+    /**
+     * A commonly used rule says that a data point is an outlier if it is more than 1.5 * IQR above the third quartile
+     * or below the first quartile. Said differently, low outliers are below Q1-1.5 * IQR
+     * ​and high outliers are above Q1-1.5 * IQR
+     * ​
+     */
+    public List<Double> findHighOutliers() {
+        List<Double> oultiers = new ArrayList<Double>();
+
+        for (double element : data) {
+            if (element > this.thirdQuartile + 1.5 * this.getInterQuartileRange()) {
+                oultiers.add(element);
+            }
+        }
+        return oultiers;
     }
 
     private static double[] toArray(Map<Double, Integer> histogram) {
@@ -254,11 +289,13 @@ public class QuantitativeData {
 
 //        QuantitativeData quantitativeData = new QuantitativeData(map);
 
-        double[] data = new double[]{5, 5, 3, 3};
+        double[] data = new double[]{5, 4, 6, 39};
 
         QuantitativeData quantitativeData = new QuantitativeData(data);
 
         System.out.println("data: " + quantitativeData);
+        System.out.println("Low outliers: " + quantitativeData.findLowOutliers());
+        System.out.println("High outliers: " + quantitativeData.findHighOutliers());
     }
 
 }
