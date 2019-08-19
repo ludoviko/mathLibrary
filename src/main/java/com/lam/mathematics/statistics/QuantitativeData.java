@@ -289,7 +289,7 @@ public class QuantitativeData {
 
 //        QuantitativeData quantitativeData = new QuantitativeData(map);
 
-        double[] data = new double[]{5, 4, 6, 39};
+        double[] data = new double[]{(4 + 1.0 / 3), (3 + 2.0 / 3), (5), (3 + 1.0 / 3), 6, (1 + 2.0 / 3)};
 
         QuantitativeData quantitativeData = new QuantitativeData(data);
 
