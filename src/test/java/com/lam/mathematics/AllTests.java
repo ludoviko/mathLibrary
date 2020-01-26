@@ -41,7 +41,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	MultifactorialTest.class,
 	NumberTheoryTest.class,
 	PanDigitalTest.class,
-	PascalTriangleBITest.class,
     PisanoPeriodTest.class,
 	PointTest.class,
 	PrimesTest.class,
