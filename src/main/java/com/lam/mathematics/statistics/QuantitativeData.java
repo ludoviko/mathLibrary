@@ -244,6 +244,10 @@ public class QuantitativeData {
         this.coefficientOfvariation = (100 * this.standardDeviation) / this.getMean();
     }
 
+    public double z(double x) {
+        return (x - mean) / standardDeviation;
+    }
+
     public void meanAbsoluteDeviation() {
         this.meanAbsoluteDeviation = 0;
 
@@ -253,7 +257,6 @@ public class QuantitativeData {
 
         this.meanAbsoluteDeviation = this.meanAbsoluteDeviation / this.data.length;
     }
-
 
     @Override
     public String toString() {
