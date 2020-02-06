@@ -244,6 +244,7 @@ public class QuantitativeData {
         this.coefficientOfvariation = (100 * this.standardDeviation) / this.getMean();
     }
 
+    // Measure of how many standard deviations is the given point from the mean.
     public double z(double x) {
         return (x - mean) / standardDeviation;
     }
