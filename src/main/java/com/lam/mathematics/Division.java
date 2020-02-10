@@ -33,8 +33,14 @@ public class Division {
     };
 
     public void calculate() {
-        this.quotient = Math.floorDiv(dividend, divisor);
-        this.remainder = Math.floorMod(dividend, divisor);
+//        this.quotient = Math.floorDiv(dividend, divisor);
+//        this.remainder = Math.floorMod(dividend, divisor);
+        this.quotient = dividend / divisor;
+        this.remainder = (dividend % divisor);
+        if (this.remainder < 0) {
+            this.remainder += divisor;
+            this.quotient--;
+        }
     }
 
     public long getRemainder() {
@@ -56,7 +62,7 @@ public class Division {
     }
 
     public static void main(String[] args) {
-        Division division = new Division(-1, 11);
+        Division division = new Division(-19, 4);
         division.calculate();
         System.out.println(division);
     }
