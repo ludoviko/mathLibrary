@@ -12,7 +12,11 @@ package com.lam.mathematics.statistics;
  * Sdy: sample standard deviation for the set t.
  *
  * r lies in the interval [-1, 1] .
- * *
+ *
+ * Strong positive linear relationships have values of r closer to 1.
+ * Strong negative linear relationships have values of r closer to -1.
+ * Weaker relationships have values of r closer to 000.
+ *
  * <p>
  * º
  */
