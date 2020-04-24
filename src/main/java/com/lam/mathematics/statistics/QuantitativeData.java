@@ -198,7 +198,7 @@ public class QuantitativeData {
 
     // Sample standard deviation.
     private void unbiasedDeviation() {
-        unbiasedDeviation = Math.sqrt(sampleVariance);
+        unbiasedDeviation = Math.sqrt(this.sampleVariance);
     }
 
     private void mode() {
@@ -246,7 +246,7 @@ public class QuantitativeData {
 
     // Measure of how many standard deviations is the given point from the mean.
     public double z(double x) {
-        return (x - mean) / standardDeviation;
+        return (x - mean) / this.unbiasedDeviation;
     }
 
     public void meanAbsoluteDeviation() {
@@ -293,7 +293,7 @@ public class QuantitativeData {
 
 //        QuantitativeData quantitativeData = new QuantitativeData(map);
 
-        double[] data = new double[]{(4 + 1.0 / 3), (3 + 2.0 / 3), (5), (3 + 1.0 / 3), 6, (1 + 2.0 / 3)};
+        double[] data = {40, 0, 0, 286, 357, 210, 1293, 55, 498, 552, 0};
 
         QuantitativeData quantitativeData = new QuantitativeData(data);
 
