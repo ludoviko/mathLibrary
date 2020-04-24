@@ -10,6 +10,8 @@ package com.lam.mathematics.statistics;
  * Where
  * Sdx: sample standard deviation for the set x.
  * Sdy: sample standard deviation for the set t.
+ *
+ * r lies in the interval [-1, 1] .
  * *
  * <p>
  * º
