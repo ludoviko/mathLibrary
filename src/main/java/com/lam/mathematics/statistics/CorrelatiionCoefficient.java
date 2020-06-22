@@ -15,7 +15,7 @@ package com.lam.mathematics.statistics;
  *
  * Strong positive linear relationships have values of r closer to 1.
  * Strong negative linear relationships have values of r closer to -1.
- * Weaker relationships have values of r closer to 000.
+ * Weaker relationships have values of r closer to 0.00.
  *
  *   Equation of a regression line
  *   y = mx + b
