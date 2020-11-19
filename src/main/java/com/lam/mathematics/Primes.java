@@ -3,9 +3,9 @@
  */
 package com.lam.mathematics;
 
-import java.util.Arrays;
-
 import com.lam.annotation.Note;
+
+import java.util.Arrays;
 
 
 /**
@@ -28,33 +28,33 @@ public class Primes {
     public void find (int upTo) {
     	this.upTo= upTo;
 
-    	boolean[] primesBool = new boolean[this.upTo + 1];
-    	Arrays.fill(primesBool, true);
+    	boolean[] isPrime = new boolean[this.upTo + 1];
+    	Arrays.fill(isPrime, true);
     	
-    	primesBool[0] = false;
-    	primesBool[1] = false;
+    	isPrime[0] = false;
+    	isPrime[1] = false;
     	
-    	int root = (int)Math.sqrt(this.upTo);
-    	
-    	for (int i = 2; i <=root; i++) {
-    		if (primesBool[i]) {
-    			for (int j = i*i; j <=this.upTo; j+=i) {
-    				primesBool[j] = false;
-    			}
-    		}
-    	};
- 
+//    	int root = (int)Math.sqrt(this.upTo);
+
+		for (int i = 2; i <= this.upTo/i; i++) {
+			if (isPrime[i]) {
+				for (int j = i; j <= this.upTo/i; j++) {
+					isPrime[i*j] = false;
+				}
+			}
+		}
+
     	int len = 0;
-    	for ( int i = 1; i < primesBool.length; i++) {
-    		if ( primesBool[i] ) {
+    	for ( int i = 1; i < isPrime.length; i++) {
+    		if ( isPrime[i] ) {
     			len++;
     		};
     	};
  
     	array = new long[len];
     	int k = 0;
-    	for ( int i = 1; i < primesBool.length; i++) {
-    		if ( primesBool[i] ) {
+    	for ( int i = 1; i < isPrime.length; i++) {
+    		if ( isPrime[i] ) {
     			array[k++] = i;		
     		};
     	};
