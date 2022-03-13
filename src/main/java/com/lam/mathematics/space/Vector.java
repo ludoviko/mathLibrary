@@ -1,10 +1,6 @@
 package com.lam.mathematics.space;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,8 +52,17 @@ public class Vector implements Comparable<Vector> {
     }
 
     public Vector add(Vector b) {
-           return new Vector(this.name + "_" + b.name , this.x + b.getX(), this.y + b.getY());
+           return new Vector(this.name + "+" + b.name , this.x + b.getX(), this.y + b.getY());
     }
+
+    public Vector subtract(Vector b) {
+        return new Vector(this.name + "-" + b.name , this.x - b.getX(), this.y - b.getY());
+    }
+
+    public Vector scalarMultiply(double scalar) {
+        return new Vector(this.name + " * scalar " + scalar, this.x * scalar, this.y * scalar);
+    }
+
 
     public double getX() {
         return x;
