@@ -8,7 +8,7 @@ import java.util.Scanner;
  * HyperSkill task.
  * Number Base Converter (Java)
  */
-public class BaseConvertor {
+public class BaseConverter {
 
     public static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -19,7 +19,7 @@ public class BaseConvertor {
 
     StringBuilder result;
 
-    public BaseConvertor(BigDecimal decimal, BigDecimal base) {
+    public BaseConverter(BigDecimal decimal, BigDecimal base) {
         this.decimal = decimal;
         this.base = base;
         this.result = new StringBuilder();
@@ -165,7 +165,7 @@ public class BaseConvertor {
             } else {
                 // It is a number in any base.
                 BigDecimal decimal = toDecimal(option, source);
-                BaseConvertor main = new BaseConvertor(decimal, new BigDecimal(Integer.toString(target)));
+                BaseConverter main = new BaseConverter(decimal, new BigDecimal(Integer.toString(target)));
                 main.conversionWhole();
                 main.conversionFraction();
                 System.out.printf("Conversion result: %s %n", main.getResult());
